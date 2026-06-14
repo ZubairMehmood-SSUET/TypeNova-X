@@ -1,0 +1,139 @@
+.vkb {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: var(--space-4) var(--space-3) var(--space-3);
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  user-select: none;
+  animation: fadeIn var(--dur-base) var(--ease-smooth) both;
+}
+
+/* ── Row ── */
+.vkb__row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+/* ── Base key ── */
+.vkb__key {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 32px;
+  padding: 0 6px;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--clr-text-muted);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(139, 92, 246, 0.1);
+  border-bottom: 2px solid rgba(139, 92, 246, 0.15);
+  border-radius: var(--radius-sm);
+  transition:
+    background var(--dur-fast),
+    border-color var(--dur-fast),
+    color var(--dur-fast),
+    transform var(--dur-fast),
+    box-shadow var(--dur-fast);
+}
+
+/* ── Wide keys ── */
+.vkb__key--wide {
+  min-width: 52px;
+  font-size: 0.55rem;
+  letter-spacing: 0.04em;
+}
+
+/* ── Special (non-character) keys ── */
+.vkb__key--special {
+  color: var(--clr-text-muted);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* ── Spacebar ── */
+.vkb__key--space {
+  min-width: 280px;
+}
+
+/* ── Target key — next expected character ── */
+.vkb__key--target {
+  color: var(--clr-purple-300);
+  background: rgba(139, 92, 246, 0.14);
+  border-color: rgba(139, 92, 246, 0.5);
+  border-bottom-color: var(--clr-purple-500);
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.25);
+}
+
+/* ── Correct press — key was pressed and matched target ── */
+.vkb__key--correct {
+  color: var(--clr-correct);
+  background: rgba(52, 211, 153, 0.12);
+  border-color: rgba(52, 211, 153, 0.45);
+  border-bottom-color: var(--clr-correct);
+  transform: translateY(1px);
+  box-shadow: 0 0 10px rgba(52, 211, 153, 0.2);
+}
+
+/* ── Wrong press — key pressed but didn't match ── */
+.vkb__key--wrong {
+  color: var(--clr-error);
+  background: rgba(248, 113, 113, 0.12);
+  border-color: rgba(248, 113, 113, 0.45);
+  border-bottom-color: var(--clr-error);
+  transform: translateY(1px);
+  box-shadow: 0 0 10px rgba(248, 113, 113, 0.2);
+}
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+  .vkb__key {
+    min-width: 26px;
+    height: 28px;
+    font-size: 0.52rem;
+    padding: 0 4px;
+  }
+
+  .vkb__key--wide {
+    min-width: 42px;
+  }
+
+  .vkb__key--space {
+    min-width: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .vkb__key {
+    min-width: 22px;
+    height: 25px;
+    font-size: 0.46rem;
+    padding: 0 3px;
+    gap: 2px;
+    border-radius: 4px;
+  }
+
+  .vkb__key--wide {
+    min-width: 34px;
+  }
+
+  .vkb__key--space {
+    min-width: 130px;
+  }
+
+  .vkb__row {
+    gap: 3px;
+  }
+
+  .vkb {
+    gap: 4px;
+    padding: var(--space-3) var(--space-2);
+  }
+}

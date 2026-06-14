@@ -1,0 +1,366 @@
+/* ============================================================
+   TypeNova-X — Global Design System
+   ============================================================ */
+
+/* --- Design Tokens --- */
+:root {
+  /* Core Palette */
+  --clr-bg-base:        #07070f;
+  --clr-bg-surface:     #0d0d1a;
+  --clr-bg-elevated:    #13132b;
+
+  /* Purple Scale */
+  --clr-purple-950:     #1a0a3d;
+  --clr-purple-900:     #2d1b69;
+  --clr-purple-700:     #5b21b6;
+  --clr-purple-500:     #8b5cf6;
+  --clr-purple-400:     #a78bfa;
+  --clr-purple-300:     #c4b5fd;
+  --clr-purple-100:     #ede9fe;
+
+  /* Accent */
+  --clr-accent-cyan:    #22d3ee;
+  --clr-accent-pink:    #f472b6;
+  --clr-accent-amber:   #fbbf24;
+
+  /* Semantic */
+  --clr-correct:        #34d399;
+  --clr-error:          #f87171;
+  --clr-neutral:        #94a3b8;
+  --clr-text-primary:   #f1f0ff;
+  --clr-text-secondary: #94a3b8;
+  --clr-text-muted:     #4b5563;
+  --clr-border:         rgba(139, 92, 246, 0.15);
+  --clr-border-hover:   rgba(139, 92, 246, 0.40);
+
+  /* Glass */
+  --glass-bg:           rgba(13, 13, 26, 0.65);
+  --glass-bg-strong:    rgba(19, 19, 43, 0.80);
+  --glass-border:       rgba(139, 92, 246, 0.18);
+  --glass-shadow:       0 8px 32px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(139, 92, 246, 0.10);
+  --glass-shadow-lg:    0 24px 64px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(139, 92, 246, 0.15);
+  --glass-blur:         blur(16px);
+
+  /* Typography */
+  --font-display:       'Orbitron', monospace;
+  --font-mono:          'Space Mono', monospace;
+  --font-typing:        'Times New Roman', Times, serif;
+
+  /* Spacing Scale */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  /* Radii */
+  --radius-sm:  6px;
+  --radius-md:  12px;
+  --radius-lg:  20px;
+  --radius-xl:  28px;
+  --radius-pill: 9999px;
+
+  /* Transitions */
+  --ease-snappy:  cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-bounce:  cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-smooth:  cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast:     120ms;
+  --dur-base:     220ms;
+  --dur-slow:     380ms;
+
+  /* Z-Index */
+  --z-base:    1;
+  --z-card:    10;
+  --z-overlay: 100;
+  --z-modal:   200;
+  --z-toast:   300;
+}
+
+/* --- Reset --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background-color: var(--clr-bg-base);
+  color: var(--clr-text-primary);
+  font-family: var(--font-mono);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+input, textarea {
+  font-family: inherit;
+  outline: none;
+  border: none;
+  background: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* --- Scrollbar --- */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--clr-bg-surface);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--clr-purple-700);
+  border-radius: var(--radius-pill);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--clr-purple-500);
+}
+
+/* --- Selection --- */
+::selection {
+  background: rgba(139, 92, 246, 0.35);
+  color: var(--clr-purple-100);
+}
+
+/* --- Utility Classes --- */
+
+/* Glass card */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: var(--radius-lg);
+}
+
+.glass-card--strong {
+  background: var(--glass-bg-strong);
+  box-shadow: var(--glass-shadow-lg);
+}
+
+/* Gradient text */
+.text-gradient {
+  background: linear-gradient(135deg, var(--clr-purple-400), var(--clr-accent-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient--hot {
+  background: linear-gradient(135deg, var(--clr-purple-300), var(--clr-accent-pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glow utilities */
+.glow-purple {
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.4), 0 0 60px rgba(139, 92, 246, 0.15);
+}
+
+.glow-purple-text {
+  text-shadow: 0 0 20px rgba(139, 92, 246, 0.8), 0 0 40px rgba(139, 92, 246, 0.4);
+}
+
+/* Divider */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--clr-border), transparent);
+  margin: var(--space-8) 0;
+}
+
+/* Screen-reader only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Noise texture overlay helper */
+.noise-overlay {
+  position: relative;
+}
+.noise-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  border-radius: inherit;
+  opacity: 0.5;
+}
+
+/* Pulse animation */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+
+/* Float animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+
+/* Shimmer */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+/* Fade-in up */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade-in */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Blink cursor */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* ============================================================
+   Phase 7 — Accessibility, Performance, Polish
+   ============================================================ */
+
+/* ── Skip navigation link ── */
+.skip-nav {
+  position: absolute;
+  top: -100%;
+  left: var(--space-4);
+  z-index: 9999;
+  padding: var(--space-3) var(--space-6);
+  background: var(--clr-purple-500);
+  color: var(--clr-bg-base);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  text-decoration: none;
+  transition: top var(--dur-fast);
+}
+
+.skip-nav:focus {
+  top: 0;
+}
+
+/* ── Focus-visible styles ── */
+/* Remove default outline, provide consistent custom focus ring */
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--clr-purple-400);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* Buttons and links need their own treatment */
+button:focus-visible,
+a:focus-visible,
+[role="button"]:focus-visible {
+  outline: 2px solid var(--clr-purple-400);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* ── Reduced motion ── */
+/* Honour the user's OS setting — disable all animations */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration:        0.01ms !important;
+    animation-iteration-count: 1      !important;
+    transition-duration:       0.01ms !important;
+    scroll-behavior:           auto   !important;
+  }
+}
+
+/* ── Main content wrapper ── */
+/* Added by App.jsx — removes default outline on programmatic focus */
+main:focus {
+  outline: none;
+}
+
+/* ── Touch targets ── */
+/* Minimum 44×44px tap targets for interactive elements on mobile */
+@media (max-width: 768px) {
+  button,
+  a,
+  [role="button"] {
+    min-height: 36px;
+  }
+}
+
+/* ── Print styles ── */
+@media print {
+  .navbar,
+  .ambient,
+  .test-shortcuts,
+  .test-toggle-btn {
+    display: none !important;
+  }
+}
